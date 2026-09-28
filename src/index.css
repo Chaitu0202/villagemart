@@ -38,3 +38,24 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #063B2A;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(244, 196, 0, 0.4);
+}
+
+.green-glow {
+  box-shadow: 0 0 35px -5px rgba(11, 90, 56, 0.5);
+}

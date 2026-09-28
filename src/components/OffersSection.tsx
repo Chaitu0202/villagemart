@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Tag, Sparkles, ArrowRight, CheckCircle2, Flame, Zap } from 'lucide-react';
 import { OFFERS } from '../data/storeData';
 
 interface OffersSectionProps {
@@ -12,23 +12,23 @@ export const OffersSection: React.FC<OffersSectionProps> = ({
   onChecklistClick 
 }) => {
   return (
-    <section id="offers" className="py-14 sm:py-20 bg-[#063B2A] text-white relative overflow-hidden border-b border-[#0B5A38]">
-      {/* Decorative subtle glows */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-[#0B5A38] rounded-full blur-3xl opacity-40 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#F4C400] rounded-full blur-3xl opacity-10 pointer-events-none" />
+    <section id="offers" className="py-14 sm:py-20 bg-[#063B2A] text-white relative overflow-hidden border-b-2 border-[#0B5A38]">
+      {/* Decorative ambient glows */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#0B5A38] rounded-full blur-[100px] opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F4C400] rounded-full blur-[120px] opacity-20 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#F4C400] bg-[#0B5A38] px-3.5 py-1 rounded-full border border-[#F4C400]/30 mb-3 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Honest Village Savings</span>
+          <div className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#063B2A] bg-[#F4C400] px-4 py-1.5 rounded-full shadow-md mb-3 border border-white/40 gold-glow">
+            <Zap className="w-3.5 h-3.5 fill-[#063B2A]" />
+            <span>HONEST VILLAGE SAVINGS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            GOOD PRICES. EVERY DAY.
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-display">
+            GOOD PRICES. <span className="text-[#F4C400]">EVERY DAY.</span>
           </h2>
-          <p className="text-sm sm:text-base text-neutral-300 mt-2">
+          <p className="text-sm sm:text-base text-neutral-200 mt-2">
             No inflated retail prices. Genuine branded grocery value packs for your regular family requirements.
           </p>
         </div>
@@ -38,17 +38,19 @@ export const OffersSection: React.FC<OffersSectionProps> = ({
           {OFFERS.map((offer, idx) => (
             <div
               key={offer.id}
-              className="bg-[#0B5A38] rounded-2xl p-6 border border-[#F4C400]/30 hover:border-[#F4C400] transition-all duration-200 flex flex-col justify-between group hover:shadow-xl hover:-translate-y-0.5"
+              className="bg-gradient-to-b from-[#0B5A38] to-[#063B2A] rounded-2xl p-6 border-2 border-[#F4C400]/40 hover:border-[#F4C400] transition-all duration-300 flex flex-col justify-between group hover:shadow-2xl hover:-translate-y-1 hover:gold-glow"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider bg-[#F4C400] text-[#063B2A] px-2.5 py-1 rounded-md">
+                  <span className="text-[11px] font-black uppercase tracking-wider bg-[#F4C400] text-[#063B2A] px-2.5 py-1 rounded-md shadow-xs">
                     {offer.badge}
                   </span>
-                  <Tag className="w-4 h-4 text-[#F4C400]" />
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#F4C400] group-hover:bg-[#F4C400] group-hover:text-[#063B2A] transition-colors">
+                    <Flame className="w-4 h-4 fill-current" />
+                  </div>
                 </div>
 
-                <h3 className="text-lg font-bold text-white font-display leading-snug mb-2 group-hover:text-[#F4C400] transition-colors">
+                <h3 className="text-lg sm:text-xl font-black text-white font-display leading-snug mb-2 group-hover:text-[#F4C400] transition-colors">
                   {offer.title}
                 </h3>
 
@@ -56,7 +58,7 @@ export const OffersSection: React.FC<OffersSectionProps> = ({
                   {offer.subtitle}
                 </p>
 
-                <div className="flex items-start gap-2 text-xs text-[#F4C400] font-medium bg-[#063B2A]/60 p-2.5 rounded-xl border border-white/10 mb-4">
+                <div className="flex items-start gap-2 text-xs text-[#F4C400] font-bold bg-[#04261B]/80 p-3 rounded-xl border border-[#F4C400]/20 mb-4">
                   <CheckCircle2 className="w-4 h-4 shrink-0 text-[#F4C400] mt-0.5" />
                   <span>{offer.savingsNote}</span>
                 </div>
@@ -70,18 +72,19 @@ export const OffersSection: React.FC<OffersSectionProps> = ({
                     onOfferSelect(offer.applicableCategories[0] || 'all');
                   }
                 }}
-                className="w-full py-2.5 px-3 bg-[#063B2A] hover:bg-[#F4C400] text-neutral-100 hover:text-[#063B2A] font-bold text-xs rounded-xl border border-[#F4C400]/40 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 px-3 bg-[#F4C400] hover:bg-[#e2b500] text-[#063B2A] font-black text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
               >
                 <span>{offer.ctaText}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
               </button>
             </div>
           ))}
         </div>
 
         {/* Banner note */}
-        <div className="mt-10 p-4 rounded-2xl bg-[#0B5A38]/50 border border-white/10 text-center text-xs text-neutral-300 max-w-xl mx-auto flex items-center justify-center gap-2">
-          <span>🔔 Special wedding, festival, or bulk wholesale orders? Contact Suresh or Ganesh on WhatsApp for personalized quotes.</span>
+        <div className="mt-10 p-4 rounded-2xl bg-gradient-to-r from-[#0B5A38] via-[#08452a] to-[#0B5A38] border-2 border-[#F4C400]/40 text-center text-xs text-white font-semibold max-w-2xl mx-auto flex items-center justify-center gap-2 shadow-md">
+          <Sparkles className="w-4 h-4 text-[#F4C400] shrink-0" />
+          <span>Need bulk supplies for weddings, village pujas, or functions? Message Suresh or Ganesh on WhatsApp for personalized wholesale discounts!</span>
         </div>
 
       </div>
